@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f6fa">
+  <title>MathCheck AI | 수학 풀이 노트</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <div class="brand">MathCheck <span>AI</span></div>
+      <div class="subtitle">수학 수행평가 · 디지털 풀이 노트</div>
+    </div>
+    <nav class="tabs" aria-label="화면 선택">
+      <button id="studentTab" class="tab active" type="button">학생 노트</button>
+      <button id="teacherTab" class="tab" type="button">교사 관리자</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="studentView" class="view">
+      <div class="page-heading">
+        <div>
+          <h1>수학 풀이 노트</h1>
+          <p class="muted">1학년 수학 · 이차함수 · 예시 과제</p>
+        </div>
+        <label class="student-id">학번
+          <input id="studentId" value="10522" inputmode="numeric" maxlength="12">
+        </label>
+      </div>
+
+      <div class="toolbar" aria-label="필기 도구">
+        <button id="penButton" class="tool-button active" type="button">✎ 펜</button>
+        <button id="eraserButton" class="tool-button" type="button">⌫ 지우개</button>
+        <button id="undoButton" class="tool-button" type="button">↶ 실행 취소</button>
+        <button id="clearButton" class="tool-button" type="button">전체 지우기</button>
+        <span class="toolbar-hint">S펜으로 작성해 주세요. 현재 버전은 손가락 필기를 받지 않습니다.</span>
+      </div>
+
+      <section class="worksheet" aria-label="교과서 풀이 활동지">
+        <div class="worksheet-heading">
+          <strong>교과서 풀이 활동지</strong>
+          <span>82쪽 · 1~3번</span>
+        </div>
+        <div class="problem-grid">
+          <article class="problem">
+            <div class="question">
+              <span class="question-number">1번</span>
+              <p>이차함수 <strong>f(x) = -x² + 4x + 1</strong>의 최댓값을 구하고, 풀이 과정을 쓰시오.</p>
+            </div>
+            <div class="work-label">풀이 공간</div>
+            <canvas class="writing-canvas" data-question="1" aria-label="1번 풀이 필기 영역"></canvas>
+          </article>
+
+          <article class="problem">
+            <div class="question">
+              <span class="question-number">2번</span>
+              <p>이차함수 <strong>y = 2(x - 1)² - 8</strong>의 그래프의 꼭짓점과 x절편을 구하시오.</p>
+            </div>
+            <div class="work-label">풀이 공간</div>
+            <canvas class="writing-canvas" data-question="2" aria-label="2번 풀이 필기 영역"></canvas>
+          </article>
+
+          <article class="problem">
+            <div class="question">
+              <span class="question-number">3번</span>
+              <p>이차함수 <strong>y = x² - 6x + k</strong>의 최솟값이 3일 때, 상수 k의 값을 구하시오.</p>
+            </div>
+            <div class="work-label">풀이 공간</div>
+            <canvas class="writing-canvas" data-question="3" aria-label="3번 풀이 필기 영역"></canvas>
+          </article>
+        </div>
+
+        <div class="submit-row">
+          <p id="saveStatus" class="muted small">작성 내용은 이 브라우저에 자동 저장됩니다.</p>
+          <button id="submitButton" class="primary-button" type="button">풀이 제출하기</button>
+        </div>
+        <p id="studentMessage" class="message" role="status"></p>
+      </section>
+    </section>
+
+    <section id="teacherView" class="view hidden">
+      <div class="page-heading">
+        <div>
+          <h1>교사용 관리자 페이지</h1>
+          <p class="muted">제출 현황 및 평가 관리 · 초기 시제품</p>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div><span class="muted small">이 기기에서 제출된 기록</span><strong id="submissionCount">0</strong></div>
+        <div><span class="muted small">AI 평가 연동</span><strong>미연결</strong></div>
+      </div>
+      <section class="panel">
+        <h2>학생 제출 목록</h2>
+        <div id="submissionTable" class="table-wrap">
+          <p class="muted small">아직 제출된 풀이가 없습니다.</p>
+        </div>
+      </section>
+      <p class="muted small">현재는 화면과 필기·제출 흐름을 확인하는 프런트엔드 시제품입니다. 실제 여러 기기 간 공유, 계정 권한, AI 채점은 백엔드와 API 연결이 필요합니다.</p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
